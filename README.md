@@ -16,7 +16,7 @@ Before setting up the project, make sure you have the following installed:
 
 - Python 3.10+
 - pip (Python package manager)
-- PostgreSQL (for production use) or SQLite (for development use)
+  SQLite (for development use)
 
 ## Setup Instructions
 
@@ -24,13 +24,12 @@ Before setting up the project, make sure you have the following installed:
 
 Clone the project repository to your local machine:
 
-```bash
+
 git clone <repository-url>
 cd project_management_tool
 2. Set Up a Virtual Environment
 Create and activate a virtual environment:
 
-bash
 Copy code
 # On Linux/Mac
 python3 -m venv env
@@ -42,25 +41,17 @@ env\Scripts\activate
 3. Install Dependencies
 Install the required dependencies listed in the requirements.txt file:
 
-bash
 Copy code
 pip install -r requirements.txt
 4. Set Up the Database
-The project uses PostgreSQL by default, but SQLite is configured for development. To set up the database:
+The project uses by default, but SQLite is configured for development. To set up the database:
+ 
 
-Create a PostgreSQL database (if using PostgreSQL):
-
-Create a new database using your PostgreSQL client (e.g., pgAdmin).
-Update the DATABASES settings in settings.py if you're using a custom database.
-Run database migrations to create the necessary tables:
-
-bash
 Copy code
 python manage.py migrate
 5. Create a Superuser (Optional)
 If you want to access the Django admin interface, create a superuser:
 
-bash
 Copy code
 python manage.py createsuperuser
 Follow the prompts to set up the superuser account.
@@ -68,7 +59,6 @@ Follow the prompts to set up the superuser account.
 6. Run the Development Server
 Start the Django development server:
 
-bash
 Copy code
 python manage.py runserver
 The project should now be running at http://127.0.0.1:8000.
@@ -76,7 +66,7 @@ The project should now be running at http://127.0.0.1:8000.
 Accessing the API
 The API is accessible via the following URL:
 
-Base URL: http://127.0.0.1:8000/api/
+Base URL: http://127.0.0.1:8000
 API Documentation
 Swagger Documentation: You can view the Swagger UI documentation by navigating to the following URL in your browser:
 
@@ -88,82 +78,43 @@ The Swagger UI will list all available endpoints, request/response formats, and 
 Postman Collection: You can also use the Postman collection for API testing. Download the collection file here or import it into your Postman app.
 
 Available Endpoints
-1. User Endpoints
-POST /api/register/: Register a new user.
-POST /api/login/: Login a user.
-GET /api/{id}/: Get user details.
-PUT /api/{id}/update/: Update user details.
-DELETE /api/{id}/delete/: Delete a user account.
-2. Project Endpoints
-GET /api/projects/: Get the list of projects.
-POST /api/projects/: Create a new project.
-GET /api/projects/{id}/: Get details of a specific project.
-PUT /api/projects/{id}/: Update a project.
-DELETE /api/projects/{id}/: Delete a project.
-3. Task Endpoints
-GET /api/projects/{project_id}/tasks/: List tasks for a project.
-POST /api/projects/{project_id}/tasks/: Create a new task.
-GET /api/tasks/{id}/: Get task details.
-PUT /api/tasks/{id}/: Update a task.
-DELETE /api/tasks/{id}/: Delete a task.
-4. Comment Endpoints
-GET /api/tasks/{task_id}/comments/: List comments for a task.
-POST /api/tasks/{task_id}/comments/: Create a comment on a task.
-GET /api/comments/{id}/: Get comment details.
-PUT /api/comments/{id}/: Update a comment.
-DELETE /api/comments/{id}/: Delete a comment.
-Testing the API with Postman
+Here are all the API endpoints:
+
+Comments Endpoints
+GET /api/comments/{id}/
+DELETE /api/comments/{id}/delete/
+PUT /api/comments/{id}/update/
+PATCH /api/comments/{id}/update/
+Project Endpoints
+GET /api/projects/
+POST /api/projects/
+POST /api/projects/create/
+GET /api/projects/{id}/
+DELETE /api/projects/{id}/delete/
+PUT /api/projects/{id}/update/
+PATCH /api/projects/{id}/update/
+Task Endpoints
+GET /api/projects/{project_id}/tasks/
+POST /api/projects/{project_id}/tasks/
+POST /api/projects/{project_id}/tasks/create/
+GET /api/tasks/{id}/
+DELETE /api/tasks/{id}/delete/
+PUT /api/tasks/{id}/update/
+PATCH /api/tasks/{id}/update/
+GET /api/tasks/{task_id}/comments/
+POST /api/tasks/{task_id}/comments/
+POST /api/tasks/{task_id}/comments/create/
+User Endpoints
+POST /api/users/login/
+POST /api/users/register/
+GET /api/users/{id}/
+DELETE /api/users/{id}/delete/
+PUT /api/users/{id}/update/
+PATCH /api/users/{id}/update/
 You can test the API by using the Postman collection:
 
 Open Postman.
 Click on Import and select the downloaded Postman collection file (or use the provided collection link).
 Select the desired API endpoint and HTTP method (GET, POST, PUT, DELETE).
 Send the request to see the response from the API.
-Example Request
-Register a New User
-POST http://127.0.0.1:8000/api/register/
-
-Request Body:
-
-json
-Copy code
-{
-  "username": "john_doe",
-  "email": "john@example.com",
-  "password": "password123"
-}
-Response:
-
-json
-Copy code
-{
-  "id": 1,
-  "username": "john_doe",
-  "email": "john@example.com"
-}
-Create a New Project
-POST http://127.0.0.1:8000/api/projects/
-
-Request Body:
-
-json
-Copy code
-{
-  "name": "Project Alpha",
-  "owner": 1
-}
-Response:
-
-json
-Copy code
-{
-  "id": 1,
-  "name": "Project Alpha",
-  "owner": 1,
-  "created_at": "2024-12-16T12:34:56.789Z"
-}
-Submitting the Project
-Push your code to a Git repository (e.g., GitHub).
-Include this README.md file with instructions.
-Provide the link to your Git repository and API documentation (Swagger or Postman collection) for submission.
-Use the following Google Form to submit your project.
+ 
