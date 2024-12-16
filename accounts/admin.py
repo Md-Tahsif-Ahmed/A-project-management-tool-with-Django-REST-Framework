@@ -3,18 +3,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from .models import Project, Task, Comment, ProjectMember
 
-# Get the custom User model
 User = get_user_model()
 
-# Register custom User model with a customized UserAdmin
+# Custom User Admin is already registered here, so no need to register again
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-    # Fields to display in the User list
     list_display = ('id', 'username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'date_joined')
-    search_fields = ('username', 'email', 'first_name', 'last_name')  # Search by username, email, etc.
+    search_fields = ('username', 'email', 'first_name', 'last_name')  
     ordering = ('id',)
 
-    # Fields to display when viewing/editing a User
     fieldsets = (
         (None, {'fields': ('username', 'password')}), 
         ('Personal Info', {'fields': ('first_name', 'last_name', 'email')}), 
@@ -22,7 +19,6 @@ class CustomUserAdmin(UserAdmin):
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
 
-    # Fields to display when adding a new User
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
