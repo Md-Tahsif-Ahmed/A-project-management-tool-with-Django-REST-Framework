@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'rest_framework',
     'rest_framework_simplejwt',
-    'management',
+  
     'drf_yasg',  # Swagger for API Documentation
 ]
 
@@ -54,13 +55,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project_management.urls'
+AUTH_USER_MODEL = 'accounts.User'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+    ),
 }
-AUTH_USER_MODEL = 'management.User'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
 
 
 TEMPLATES = [
