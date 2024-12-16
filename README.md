@@ -59,7 +59,10 @@ The API is accessible via the following URL:
 Base URL: http://127.0.0.1:8000
 
 API Documentation
-Swagger Documentation: You can view the Swagger UI documentation by navigating to the following URL in your browser:
+
+Swagger Documentation:
+
+You can view the Swagger UI documentation by navigating to the following URL in your browser:
 
  
 http://127.0.0.1:8000/swagger/
@@ -67,37 +70,67 @@ Postman Collection
 You can also use the Postman collection for API testing. Download the collection file or import it into your Postman app.
 
 Available Endpoints
-Comments Endpoints
+#Comments Endpoints:
+
 GET /api/comments/{id}/
+
 DELETE /api/comments/{id}/delete/
+
 PUT /api/comments/{id}/update/
+
 PATCH /api/comments/{id}/update/
+
 Project Endpoints
+
 GET /api/projects/
+
 POST /api/projects/
+
 POST /api/projects/create/
 GET /api/projects/{id}/
+
 DELETE /api/projects/{id}/delete/
+
 PUT /api/projects/{id}/update/
+
 PATCH /api/projects/{id}/update/
+
 Task Endpoints
+
 GET /api/projects/{project_id}/tasks/
+
 POST /api/projects/{project_id}/tasks/
+
 POST /api/projects/{project_id}/tasks/create/
+
 GET /api/tasks/{id}/
+
 DELETE /api/tasks/{id}/delete/
+
 PUT /api/tasks/{id}/update/
+
 PATCH /api/tasks/{id}/update/
+
 GET /api/tasks/{task_id}/comments/
+
 POST /api/tasks/{task_id}/comments/
+
 POST /api/tasks/{task_id}/comments/create/
+
 User Endpoints
+
 POST /api/users/login/
+
 POST /api/users/register/
+
 GET /api/users/{id}/
+
 DELETE /api/users/{id}/delete/
+
 PUT /api/users/{id}/update/
+
 PATCH /api/users/{id}/update/
+
 Testing the API with Postman
 You can test the API using the Postman collection:
 
@@ -105,6 +138,3 @@ Open Postman.
 Click on Import and select the downloaded Postman collection file (or use the provided collection link).
 Select the desired API endpoint and HTTP method (GET, POST, PUT, DELETE).
 Send the request to see the response from the API.
- 
-
- 
